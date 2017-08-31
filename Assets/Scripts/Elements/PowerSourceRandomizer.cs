@@ -11,7 +11,7 @@ public class PowerSourceRandomizer : MonoBehaviour {
 		EventBroadcaster.Instance.AddObserver (EventNames.ON_MAIN_EVENT_GAME_STARTED, this.RandomizeActivePowerSource);
 	}
 
-	void Destroy() {
+	void OnDestroy() {
 		EventBroadcaster.Instance.RemoveActionAtObserver (EventNames.ON_MAIN_EVENT_GAME_STARTED, this.RandomizeActivePowerSource);
 	}
 

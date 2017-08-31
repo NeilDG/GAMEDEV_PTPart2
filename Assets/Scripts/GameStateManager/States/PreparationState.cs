@@ -70,6 +70,8 @@ public class PreparationState : GameState {
 	{
 		this.currentTime = 0.0f;
 		EventBroadcaster.Instance.RemoveObserver(EventNames.ON_LIGHTS_OUT_EVENT_FINISHED);
+
+		EventBroadcaster.Instance.PostEvent(EventNames.ON_MAIN_EVENT_GAME_STARTED);
 	}
 
 	private void OnReceivedLightsOutEvent() {

@@ -27,6 +27,7 @@ public class LoadManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="sceneName">Scene name.</param>
 	public static void LoadScene(string sceneName, bool dismissAutomatically) {
+		EventBroadcaster.Instance.RemoveAllObservers ();
 		sharedInstance.dismissAutomatic = dismissAutomatically;
 		sharedInstance.StartCoroutine (sharedInstance.StartLoadSequence (sceneName));
 	}

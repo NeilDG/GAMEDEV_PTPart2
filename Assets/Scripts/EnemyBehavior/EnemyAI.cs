@@ -77,7 +77,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 			//do nothing
 			break;
 		case EnemyActionType.PATROLLING:
-			if(this.navMeshAgent.remainingDistance <= EnemyConstants.PATROL_STOPPING_DISTANCE) {
+			if(this.navMeshAgent.hasPath && this.navMeshAgent.remainingDistance <= EnemyConstants.PATROL_STOPPING_DISTANCE) {
 				this.TransitionToIdle();
 			}
 			break;
