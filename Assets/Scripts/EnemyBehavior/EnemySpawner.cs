@@ -16,13 +16,10 @@ public class EnemySpawner : MonoBehaviour {
 
 	private const float Y_OFFSET = 0.00f;
 
-	void Awake() {
-		EventBroadcaster.Instance.AddObserver(EventNames.ON_MAIN_EVENT_GAME_STARTED, this.OnMainEventStarted);
-		this.HideMonsters ();
-	}
 	// Use this for initialization
 	void Start () {
-		
+		EventBroadcaster.Instance.AddObserver(EventNames.ON_MAIN_EVENT_GAME_STARTED, this.OnMainEventStarted);
+		this.HideMonsters ();
 	}
 
 	void OnDestroy() {
