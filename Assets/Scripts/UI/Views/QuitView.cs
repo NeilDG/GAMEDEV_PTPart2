@@ -20,9 +20,9 @@ public class QuitView : View {
 		this.Hide ();
 	}
 
-	public override void OnHideEvent ()
+	public override void OnHideCompleted ()
 	{
-		base.OnHideEvent ();
+		base.OnHideCompleted();
 
 		if (this.confirmed) {
 			Application.Quit ();
@@ -32,9 +32,9 @@ public class QuitView : View {
 
 	}
 
-	public override void OnShowEvent ()
+	public override void OnShowStarted ()
 	{
-		base.OnShowEvent ();
+		base.OnShowStarted ();
 		GamePauseHandler.Instance.Pause ();
 	}
 }

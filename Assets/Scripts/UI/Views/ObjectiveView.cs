@@ -10,9 +10,9 @@ public class ObjectiveView : View {
 		this.label.text = message;
 	}
 
-	public override void OnShowEvent ()
+	public override void OnShowCompleted ()
 	{
-		base.OnShowEvent ();
+		base.OnShowCompleted ();
 
 		this.StartCoroutine (this.DelayHide ());
 	}

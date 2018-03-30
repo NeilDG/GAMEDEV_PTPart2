@@ -1,8 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
-/// Repository for view names. Put new view names here
+/// Contains all view names used by the view handler.
+/// Created BY: Neil DG
 /// </summary>
 public class ViewNames {
 	public const string MAIN_MENU_PANEL_STRING = "MainMenuPanel";
@@ -16,4 +18,9 @@ public class ViewNames {
 
 	public const string TEST_PANEL_STRING = "TestPanel";
 	public const string OBJECTIVE_PANEL_STRING = "ObjectivePanel";
+
+	public class DialogNames {
+		public const string TWO_CHOICE_DIALOG_NAME = "TwoChoiceDialog";
+		public const string NOTIFICATION_DIALOG_NAME = "NotificationDialog";
+	}
 }
