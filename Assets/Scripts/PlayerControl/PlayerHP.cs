@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Simple represention of player HP measured by number of hits.
@@ -76,6 +77,6 @@ public class PlayerHP : MonoBehaviour {
 	private IEnumerator DelayRestartLevel() {
 		yield return new WaitForSeconds(this.playerSource.clip.length + 2.0f);
 		Cursor.visible = true;
-		Application.LoadLevel(SceneNames.MAIN_MENU_SCENE);
+		SceneManager.LoadScene (SceneNames.MAIN_MENU_SCENE);
 	}
 }

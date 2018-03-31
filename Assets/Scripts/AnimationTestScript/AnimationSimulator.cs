@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class AnimationSimulator : MonoBehaviour {
 
 	[SerializeField] private Animator animation;
-	[SerializeField] private UILabel[] uilabels;
+	[SerializeField] private Text[] uilabels;
 	[SerializeField] private string[] animationNames;
 
 

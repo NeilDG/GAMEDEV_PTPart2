@@ -17,15 +17,15 @@ public class ResultsView : View {
 		LoadManager.LoadScene (SceneNames.MAIN_MENU_SCENE, true);
 	}
 
-	public override void OnShowEvent ()
+	public override void OnShowStarted ()
 	{
-		base.OnShowEvent ();
+		base.OnShowStarted ();
 		GamePauseHandler.Instance.Pause ();
 	}
 
-	public override void OnHideEvent ()
+	public override void OnHideCompleted ()
 	{
-		base.OnHideEvent ();
+		base.OnHideCompleted ();
 		GamePauseHandler.Instance.Resume ();
 	}
 }

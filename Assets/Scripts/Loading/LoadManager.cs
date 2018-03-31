@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadManager : MonoBehaviour {
 	private static LoadManager sharedInstance = null;
 
-	[SerializeField] private LoadingView loadingView;
-	[SerializeField] private GameObject overlay;
-
+	private LoadingScreen loadingView;
 	private bool dismissAutomatic = true;
 
 	void Awake() {
@@ -15,10 +14,16 @@ public class LoadManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad (this.gameObject);
-		this.loadingView.SetVisibility (false);
-		this.overlay.SetActive (false);
-		this.loadingView.SetLoadManager (sharedInstance);
+		BlackOverlay.Hide ();
+
+	}
+
+	private void SetupLoadingView() {
+		if (this.loadingView == null) {
+			this.loadingView = (LoadingScreen)ViewHandler.Instance.Show (ViewNames.LOADING_SCREEN_STRING);
+			this.loadingView.SetVisibility (false);
+			this.loadingView.SetLoadManager (sharedInstance);
+		}
 	}
 
 	/// <summary>
@@ -27,6 +32,7 @@ public class LoadManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="sceneName">Scene name.</param>
 	public static void LoadScene(string sceneName, bool dismissAutomatically) {
+		sharedInstance.SetupLoadingView ();
 		EventBroadcaster.Instance.RemoveAllObservers ();
 		sharedInstance.dismissAutomatic = dismissAutomatically;
 		sharedInstance.StartCoroutine (sharedInstance.StartLoadSequence (sceneName));
@@ -43,10 +49,10 @@ public class LoadManager : MonoBehaviour {
 
 	private IEnumerator StartLoadSequence(string sceneName) {
 		this.loadingView.Show ();
-		this.overlay.SetActive (true);
+		BlackOverlay.Show ();
 		yield return new WaitForSeconds (1.0f);
 
-		Application.LoadLevel (sceneName);
+		SceneManager.LoadScene (sceneName);
 
 		if (this.dismissAutomatic == true) {
 			LoadManager.ReportLoadComplete();
@@ -54,7 +60,7 @@ public class LoadManager : MonoBehaviour {
 	}
 
 	public void Cleanup() {
-		this.overlay.SetActive (false);
+		BlackOverlay.Hide ();
 	}
 	
 }
