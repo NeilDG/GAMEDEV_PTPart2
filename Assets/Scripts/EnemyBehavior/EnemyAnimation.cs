@@ -6,11 +6,6 @@ using System.Collections;
 /// </summary>
 public class EnemyAnimation : MonoBehaviour {
 
-	[SerializeField] private string[] walkClipNames;
-	[SerializeField] private string[] runClipNames;
-	[SerializeField] private string[] attackClipNames;
-	[SerializeField] private string[] idleClipNames;
-
 	//[SerializeField] private Animation animComponent;
 	[SerializeField] private Animator animator;
 
@@ -112,29 +107,17 @@ public class EnemyAnimation : MonoBehaviour {
 
 		switch (this.enemyActionType) {
 		case EnemyAI.EnemyActionType.IDLE:
-			this.PlayRandomAnimation (this.idleClipNames);
 			this.animator.SetFloat ("RunSpeed", 0.0f);
-			//this.animComponent["Idle"].speed = 0.5f;
 			break;
 		case EnemyAI.EnemyActionType.PATROLLING:
-			this.PlayRandomAnimation (this.walkClipNames);
 			this.animator.SetFloat ("RunSpeed", 20.0f);
-			//Debug.Log ("Value of speed: " +this.animator.GetFloat ("RunSpeed"));
-			//this.animComponent["Walk"].speed = 0.4f;
 			break;
 		case EnemyAI.EnemyActionType.CHASING:
-			this.PlayRandomAnimation(this.runClipNames);
 			this.animator.SetFloat ("RunSpeed", 40.0f);
-			//this.animComponent["Run"].speed = 1.0f;
 			break;
 		case EnemyAI.EnemyActionType.ATTACKING:
 			break;
 		}
-	}
-
-	private void PlayRandomAnimation(string[] clipList) {
-		int randomIndex = Random.Range (0, clipList.Length);
-		//this.animComponent.CrossFade (clipList [randomIndex]);
 	}
 
 	/// <summary>
@@ -144,18 +127,13 @@ public class EnemyAnimation : MonoBehaviour {
 		if (this.attacking == false) {
 			this.attacking = true;
 			this.enemyActionType = EnemyAI.EnemyActionType.ATTACKING;
-			//this.animComponent["Attack"].speed = 0.5f;
-			int randomIndex = Random.Range (0, this.attackClipNames.Length);
-			//this.animComponent.CrossFade(this.attackClipNames[randomIndex]);
 			this.animator.SetTrigger("Attack");
-			this.StartCoroutine(this.HandleAttackAnim(this.attackClipNames[randomIndex]));
+			this.StartCoroutine(this.HandleAttackAnim());
 		}
 	}
 
-	private IEnumerator HandleAttackAnim(string attackClipName) {
-		//Debug.LogWarning ("attack length: " + this.animComponent.GetClip (attackClipName).length);
-		//yield return new WaitForSeconds(this.animComponent.GetClip(attackClipName).length);
-		yield return new WaitForSeconds(1.0f);
+	private IEnumerator HandleAttackAnim() {
+		yield return new WaitForSeconds(0.7f);
 		PlayerHP.Instance.AttackHit ();
 		this.attacking = false;
 	}

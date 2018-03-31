@@ -88,6 +88,10 @@ public class GameStateMachine : MonoBehaviour {
 
 	}
 
+	public bool HasProperState() {
+		return (this.currentState != null);
+	}
+
 	public StateType GetGameState() {
 		return this.currentState.GetStateType ();
 	}
