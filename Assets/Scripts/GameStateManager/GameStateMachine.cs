@@ -46,6 +46,10 @@ public class GameStateMachine : MonoBehaviour {
 		if (this.currentState != null) {
 			this.currentState.OnUpdate();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			ViewHandler.Instance.Show(ViewNames.QUIT_PANEL_STRING);
+		}
 	}
 
 	void OnDestroy() {

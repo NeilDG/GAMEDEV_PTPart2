@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class QuitView : View {
+public class QuitScreen : View {
 
 	private bool confirmed = true;
 
@@ -12,6 +12,7 @@ public class QuitView : View {
 
 
 	public void OnQuitButtonClicked() {
+		this.confirmed = true;
 		this.Hide ();
 	}
 
@@ -25,7 +26,7 @@ public class QuitView : View {
 		base.OnHideCompleted();
 
 		if (this.confirmed) {
-			Application.Quit ();
+			LoadManager.LoadScene (SceneNames.MAIN_MENU_SCENE, true);
 		} else {
 			GamePauseHandler.Instance.Resume();
 		}

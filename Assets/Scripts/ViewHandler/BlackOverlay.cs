@@ -38,6 +38,19 @@ public class BlackOverlay : MonoBehaviour {
 		sharedInstance.gameObject.SetActive(true);
 	}
 
+	public static void Show() {
+		if(sharedInstance == null) {
+			Debug.LogWarning("Black overlay not found");
+			return;
+		}
+
+		//Debug.Log("Black overlay SHOW");
+		sharedInstance.transform.SetAsLastSibling();
+		//sharedInstance.transform.SetSiblingIndex(uiTransform.GetSiblingIndex() - 1);
+
+		sharedInstance.gameObject.SetActive(true);
+	}
+
 	public static void Hide() {
 		if(sharedInstance == null) {
 			Debug.LogWarning("Black overlay not found");

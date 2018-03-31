@@ -20,6 +20,6 @@ public class BrightnessView : View {
 
 	public void OnConfirmClicked() {
 		Cursor.visible = false;
-		Application.LoadLevel(SceneNames.IN_GAME_SCENE);
+		LoadManager.LoadScene(SceneNames.IN_GAME_SCENE, true);
 	}
 }

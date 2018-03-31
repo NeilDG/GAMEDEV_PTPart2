@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Loading view
 /// </summary>
-public class LoadingView : View {
+public class LoadingScreen : View {
 
 	private LoadManager loadManager;
 

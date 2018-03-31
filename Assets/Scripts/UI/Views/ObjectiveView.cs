@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ObjectiveView : View {
-	[SerializeField] private UILabel label;
+	[SerializeField] private Text label;
 
 	private const float DURATION = 4.0f;
 
@@ -26,7 +27,7 @@ public class ObjectiveView : View {
 	public static void ShowObjective(string message, float duration = DURATION) {
 		ViewHandler.Instance.Show (ViewNames.OBJECTIVE_PANEL_STRING);
 
-		ObjectiveView objectiveView = (ObjectiveView)ViewHandler.Instance.FindActiveView (ViewNames.OBJECTIVE_PANEL_STRING);
+		ObjectiveView objectiveView = (ObjectiveView) ViewHandler.Instance.FindActiveView (ViewNames.OBJECTIVE_PANEL_STRING);
 		objectiveView.SetMessage (message);
 	}
 }
