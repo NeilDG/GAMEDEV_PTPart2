@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GenericCountdownTimer : MonoBehaviour {
 
-	[SerializeField] private UILabel textDisplay;
+	[SerializeField] private Text textDisplay;
 	[SerializeField] private float duration;
 
 	private float goalTime = 0.0f;

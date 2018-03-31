@@ -14,8 +14,6 @@ public class LoadManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad (this.gameObject);
-
 		BlackOverlay.Hide ();
 
 	}
