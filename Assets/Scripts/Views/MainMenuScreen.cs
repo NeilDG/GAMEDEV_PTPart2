@@ -12,7 +12,7 @@ public class MainMenuScreen : View {
 	}
 
 	public void OnStartClicked() {
-		LoadManager.LoadScene(SceneNames.BRIGHTNESS_ADJUSTMENT_SCENE, true);
+		LoadManager.LoadScene(SceneNames.IN_GAME_SCENE, true);
 	}
 
 	public void OnQuitClicked(){
