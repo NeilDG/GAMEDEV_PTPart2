@@ -21,7 +21,7 @@ public class PlayerHP : MonoBehaviour {
 	[SerializeField] private MouseLook mouseLookX;
 	[SerializeField] private MouseLook mouseLookY;
 
-	private const int MAX_PLAYER_HIT = 2;
+	private const int MAX_PLAYER_HIT = 10;
 	private int currentNumHits = 0;
 
 	private bool deathAnimationPlaying = false;

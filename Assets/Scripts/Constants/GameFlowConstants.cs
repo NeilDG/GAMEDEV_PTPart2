@@ -19,7 +19,7 @@ public class GameFlowConstants {
 	public const float MAX_TREMOR_DURATION = 14.0f;
 
 	public const float LIGHTS_OUT_DELAY = 0.45f;
-	public const float MAX_FOG_DENSITY = 0.5f;
+	public const float MAX_FOG_DENSITY = 0.05f;
 
 
 	public static float RandomizePreparationTime() {
