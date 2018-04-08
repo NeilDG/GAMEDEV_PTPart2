@@ -34,6 +34,7 @@ public class MachineIgniteEvent : GameEvent {
 
 		this.audioSource.clip = this.machineOverloadClip;
 		this.audioSource.Play ();
+		EventBroadcaster.Instance.PostEvent (GameEventNames.MACHINE_IGNITE_EVENT_NAME);
 		yield return new WaitForSeconds (13.0f);
 
 		this.audioSource.clip = this.machineRunClip;
