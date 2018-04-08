@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 	private EnemyActionType currentActionType = EnemyActionType.IDLE;
 
 	private bool playerInSight = false;
+	private bool hasRecentlyAttacked = false;
 	private Vector3 lastPlayerSighting = Vector3.zero;
 
 	private bool shouldWait = false;
@@ -78,7 +79,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 			break;
 		case EnemyActionType.PATROLLING:
 			if(this.navMeshAgent.hasPath && this.navMeshAgent.remainingDistance <= EnemyConstants.PATROL_STOPPING_DISTANCE) {
-				this.TransitionToIdle();
+				this.TransitionToIdle(2.5f);
 			}
 			break;
 		case EnemyActionType.CHASING:
@@ -91,8 +92,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 
 			if(Vector3.Distance(this.playerLocation.position, this.transform.position) <= EnemyConstants.CHASE_STOPPING_DISTANCE) {
 				this.enemyAnim.PlayAttackAnim();
-				this.navMeshAgent.acceleration = 60.0f;
-				this.navMeshAgent.Stop();
+				this.HaltAgent ();
 				
 			}
 			else {
@@ -115,17 +115,17 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 	/// <summary>
 	/// Transitions to idle state. Automatically transitions to patrol state if no further action is triggered.
 	/// </summary>
-	private void TransitionToIdle() {
+	private void TransitionToIdle(float idleTime) {
 		this.currentActionType = EnemyActionType.IDLE;
 		this.navMeshAgent.ResetPath ();
 		this.enemyAnim.SetAnimationFromType (EnemyActionType.IDLE);
-		this.StartCoroutine (this.DelaySwitchAction (2.5f, EnemyActionType.PATROLLING, this.TransitionToPatrolling));
+		this.StartCoroutine (this.DelaySwitchAction (idleTime, EnemyActionType.PATROLLING, this.TransitionToPatrolling));
 	}
 
 	private void TransitionToChasing() {
 		this.currentActionType = EnemyActionType.CHASING;
 		this.navMeshAgent.speed = EnemyConstants.CHASE_SPEED;
-		this.navMeshAgent.acceleration = EnemyConstants.DEFAULT_ACCELERATION;
+		this.navMeshAgent.acceleration = EnemyConstants.CHASE_ACCELERATION;
 		this.enemyAnim.SetAnimationFromType (this.currentActionType);
 	}
 
@@ -164,7 +164,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 			float angle = Vector3.Angle(direction, transform.forward);
 			
 			// If the angle between forward and where the player is, is less than half the angle of view...
-			if(angle < EnemyConstants.FIELD_OF_VIEW_ANGLE * 0.5f)
+			if(angle < EnemyConstants.FIELD_OF_VIEW_ANGLE * 0.5f && this.hasRecentlyAttacked == false)
 			{
 				this.playerInSight = true;
 				this.lastPlayerSighting = playerControl.transform.position;
@@ -174,16 +174,24 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 
 				if(Vector3.Distance(this.lastPlayerSighting, this.transform.position) <= EnemyConstants.CHASE_STOPPING_DISTANCE) {
 					this.enemyAnim.PlayAttackAnim();
-					this.navMeshAgent.acceleration = 60.0f;
-					this.navMeshAgent.Stop();
+					this.hasRecentlyAttacked = true;
+					this.HaltAgent ();
 					
 				}
 				else {
 					this.TransitionToChasing();
-					this.navMeshAgent.Resume();
+					this.navMeshAgent.isStopped = false;
 				}
 			}
 		}
+	}
+
+	private void HaltAgent() {
+		this.navMeshAgent.acceleration = 160.0f;
+		this.navMeshAgent.angularSpeed = 300.0f;
+		this.navMeshAgent.isStopped = true;
+		this.navMeshAgent.velocity = Vector3.zero;
+		this.TransitionToIdle (1.25f);
 	}
 
 	private void HandleTriggerExit(Collider other) {
@@ -191,13 +199,14 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 		
 		if (playerControl != null && this.currentActionType != EnemyActionType.FORCE_CHASE) {
 			this.playerInSight = false;
-			this.TransitionToIdle();
+			this.TransitionToIdle(1.0f);
 		}
 	}
 	
 	private IEnumerator DelaySwitchAction(float seconds, EnemyActionType actionType, System.Action transitionFunction) {
 		yield return new WaitForSeconds (seconds);
 		transitionFunction ();
+		this.hasRecentlyAttacked = false;
 		this.currentActionType = actionType;
 		this.enemyAnim.SetAnimationFromType (this.currentActionType);
 	}
