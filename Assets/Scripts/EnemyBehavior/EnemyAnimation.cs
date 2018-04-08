@@ -98,11 +98,11 @@ public class EnemyAnimation : MonoBehaviour {
 
 
 	public void SetAnimationFromType(EnemyAI.EnemyActionType actionType) {
-		if (this.enemyActionType == actionType || this.attacking == true) {
+		/*if (this.enemyActionType == actionType || this.attacking == true) {
 			return;
-		}
+		}*/
 
-		Debug.Log ("New action type: " + actionType);
+		//Debug.Log ("New action type: " + actionType);
 		this.enemyActionType = actionType;
 
 		switch (this.enemyActionType) {
