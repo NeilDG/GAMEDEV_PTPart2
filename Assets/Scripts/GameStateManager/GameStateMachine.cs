@@ -88,8 +88,8 @@ public class GameStateMachine : MonoBehaviour {
 
 	}
 
-	public bool HasProperState() {
-		return (this.currentState != null);
+	public static bool HasProperState() {
+		return (sharedInstance != null && sharedInstance.currentState != null);
 	}
 
 	public StateType GetGameState() {

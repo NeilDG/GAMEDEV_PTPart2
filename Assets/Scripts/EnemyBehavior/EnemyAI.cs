@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 
 		EventBroadcaster.Instance.AddObserver (EventNames.ON_ESCAPE_EVENT_STARTED, this.ForceChasePlayer);
 
-		if (GameStateMachine.Instance.HasProperState() && GameStateMachine.Instance.GetGameState () == GameStateMachine.StateType.GAME_ESCAPE_EVENT) {
+		if (GameStateMachine.HasProperState() && GameStateMachine.Instance.GetGameState () == GameStateMachine.StateType.GAME_ESCAPE_EVENT) {
 			this.ForceChasePlayer();
 		}
 
