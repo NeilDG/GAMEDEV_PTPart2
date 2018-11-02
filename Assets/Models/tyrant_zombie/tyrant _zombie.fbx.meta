@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: b97e0b502d6925143964fe83800d4fdf
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: all
     100002: Armature
@@ -141,6 +141,7 @@ ModelImporter:
     9500000: //RootNode
     11100000: //RootNode
     13700000: tyrant
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -161,10 +162,72 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Default Take' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'base' has translation animation that will
+      be discarded.\n\t'base' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'Bone_003_L_007' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Bone_003_R_004' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'attck01' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_002'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'attck02' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'damage01' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'damage02' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'death' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'idle' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'walk01' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'walk02' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'base'
+      has translation animation that will be discarded.\n\t'base' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Bone_003_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_L_007'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Bone_003_R_004'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -689,11 +752,15 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
