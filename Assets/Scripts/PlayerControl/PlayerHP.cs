@@ -18,8 +18,9 @@ public class PlayerHP : MonoBehaviour {
 	[SerializeField] private AudioClip dieAudioClip;
 	[SerializeField] private AudioSource playerSource;
 
-	[SerializeField] private MouseLook mouseLookX;
-	[SerializeField] private MouseLook mouseLookY;
+    //[SerializeField] private MouseLook mouseLookX;
+    //[SerializeField] private MouseLook mouseLookY;
+    private float rotationY = 0.0f;
 
 	private const int MAX_PLAYER_HIT = 10;
 	private int currentNumHits = 0;
@@ -58,9 +59,8 @@ public class PlayerHP : MonoBehaviour {
 			this.playerSource.clip = this.hurtClipList [Random.Range (0, this.hurtClipList.Length)];
 			this.playerSource.Play ();
 
-			//simulate hit effect by moving the camera
-			this.mouseLookX.SimulateHit();
-			this.mouseLookY.SimulateHit();
+            //simulate hit effect by moving the camera
+            this.SimulateHit();
 		}
 		else {
 			CharacterController characterControl = this.GetComponent<CharacterController>();
@@ -79,4 +79,10 @@ public class PlayerHP : MonoBehaviour {
 		Cursor.visible = true;
 		SceneManager.LoadScene (SceneNames.MAIN_MENU_SCENE);
 	}
+
+    public void SimulateHit() {
+        //TODO
+        float rotationX = this.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * 15.0f;
+        transform.localEulerAngles = new Vector3(0, rotationX, 0);
+    }
 }
