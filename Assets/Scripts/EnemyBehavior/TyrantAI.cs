@@ -89,12 +89,12 @@ public class TyrantAI : MonoBehaviour, IPauseCommand, IResumeCommand {
             this.navMeshAgent.SetDestination(this.playerLocation.position);
 
             if (Vector3.Distance(this.playerLocation.position, this.transform.position) <= EnemyConstants.CHASE_STOPPING_DISTANCE) {
-                //this.enemyAnim.PlayAttackAnim();
+                this.enemyAnim.PlayAttackAnim();
                 this.HaltAgent();
 
             }
             else {
-                this.navMeshAgent.Resume();
+                this.navMeshAgent.isStopped = false;
             }
             break;
         }
@@ -170,7 +170,7 @@ public class TyrantAI : MonoBehaviour, IPauseCommand, IResumeCommand {
                 this.navMeshAgent.SetDestination(this.lastPlayerSighting);
 
                 if (Vector3.Distance(this.lastPlayerSighting, this.transform.position) <= EnemyConstants.CHASE_STOPPING_DISTANCE) {
-                    //this.enemyAnim.PlayAttackAnim();
+                    this.enemyAnim.PlayAttackAnim();
                     this.hasRecentlyAttacked = true;
                     this.HaltAgent();
 

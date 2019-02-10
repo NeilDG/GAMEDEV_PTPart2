@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour, IPauseCommand, IResumeCommand {
 				
 			}
 			else {
-				this.navMeshAgent.Resume();
+                this.navMeshAgent.isStopped = false;
 			}
 			break;
 		}
